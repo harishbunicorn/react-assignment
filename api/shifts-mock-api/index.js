@@ -40,8 +40,11 @@ const routes = [
   {
     method: 'POST',
     path: '/{id}/book',
-    handler: async ({ params }) => {
+    handler: async ({params}) => {
+      // console.log("🚀 ~ file: index.js:44 ~ handler: ~ req:", req)
+      console.log('🚀 ~ file: index.js:44 ~ handler: ~ params:', typeof params.id);
       const shift = await db.shifts.get(params.id);
+      console.log("🚀 ~ file: index.js:46 ~ handler: ~ shift:", shift)
 
       if (!shift) {
         throw Boom.notFound(`Shift not found with id ${params.id}`);
